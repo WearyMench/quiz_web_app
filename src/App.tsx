@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "./API";
+
 // Components
 import QuestionCard from "./components/QuestionCard";
+import Form from "./components/Form";
 // types
-import { QuestionsState, Difficulty } from "./API";
+import { QuestionsState } from "./API";
 // Styles
 import { GlobalStyle, Wrapper } from "./App.styles";
 
@@ -14,7 +16,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-const TOTAL_QUESTIONS = 10;
+let TOTAL_QUESTIONS = 10;
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -24,12 +26,19 @@ const App: React.FC = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+  const [totalQuestions, setTotalQuestions] = useState(10);
+  const [category, setCategory] = useState("9");
+  const [difficulty, setDifficulty] = useState("easy");
+  const [type, setType] = useState("multiple");
+
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
     const newQuestions = await fetchQuizQuestions(
-      TOTAL_QUESTIONS,
-      Difficulty.EASY
+      (TOTAL_QUESTIONS = totalQuestions),
+      category,
+      difficulty,
+      type
     );
     setQuestions(newQuestions);
     setScore(0);
@@ -72,11 +81,21 @@ const App: React.FC = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-        <h1>REACT QUIZ</h1>
+        <h1>QUIZ GAME</h1>
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button className="start" onClick={startTrivia}>
-            Start
-          </button>
+          <>
+            <Form
+              totalQuestions={totalQuestions}
+              setTotalQuestions={setTotalQuestions}
+              setCategory={setCategory}
+              difficulty={difficulty}
+              setDifficulty={setDifficulty}
+              setType={setType}
+            />
+            <button className="start" onClick={startTrivia}>
+              Start
+            </button>
+          </>
         ) : null}
         {!gameOver ? <p className="score">Score: {score}</p> : null}
         {loading ? <p>Loading Questions...</p> : null}
