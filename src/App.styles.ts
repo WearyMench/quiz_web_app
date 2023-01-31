@@ -60,4 +60,18 @@ export const Wrapper = styled.div`
   .start {
     max-width: 200px;
   }
+
+  @media screen and (max-width: 480px) {
+  h1 {
+    font-size: 45px;
+  }
+  }
+  @media screen and (max-width: 340px) {
+  h1 {
+    font-size: 35px;
+  }
+  .score {
+    font-size: 1.5rem;
+  }
+  }
 `;
