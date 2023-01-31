@@ -99,6 +99,17 @@ Error generating stack: `+o.message+`
   
   input, select {
     margin: 5px;
+    border-radius: 5px;
+    border: 2px solid #0085a3;
+    color: grey;
+  }
+
+  select:focus, input:focus {
+    outline: none;
+  }
+
+  option:disabled {
+    color: white;
   }
 `,jm=({totalQuestions:e,setTotalQuestions:t,setCategory:n,difficulty:r,setDifficulty:l,setType:o})=>ht(Dm,{children:[b("input",{type:"number",value:e,onChange:i=>t(i.target.valueAsNumber)}),ht("select",{name:"category",onChange:i=>n(i.target.value),children:[b("option",{value:"9",children:"General Knowledge"}),b("option",{value:"15",children:"Video games"}),b("option",{value:"17",children:"Science and Nature"}),b("option",{value:"20",children:"Mythology"}),b("option",{value:"31",children:"anime and Manga"})]}),ht("select",{name:"difficulty",onChange:i=>l(i.target.value),children:[b("option",{value:"easy",children:"Easy"}),b("option",{value:"medium",children:"Medium"}),b("option",{value:"hard",children:"Hard"})]}),ht("select",{name:"type",onChange:i=>o(i.target.value),children:[b("option",{value:"multiple",children:"Multiple Choice"}),b("option",{value:"boolean",disabled:r==="hard",children:"True / False"})]})]}),Fm="/quiz/assets/Cozy-hut-8ba04532.png",Um=Om`
   html {
@@ -125,12 +136,13 @@ Error generating stack: `+o.message+`
   }
   .score {
     color: #fff;
+    text-shadow: 0px 0px 2px black;
     font-size: 2rem;
     margin: 0;
   }
   h1 {
-    font-family: Fascinate Inline;
-    background-image: linear-gradient(180deg, #fff, #87f1ff);
+    font-family: Inline;
+    background-image: linear-gradient(180deg, #fff, #f7cfb7);
     font-weight: 400;
     background-size: 100%;
     background-clip: text;
