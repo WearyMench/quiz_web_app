@@ -13,5 +13,16 @@ export const FormWrapper = styled.form`
   
   input, select {
     margin: 5px;
+    border-radius: 5px;
+    border: 2px solid #0085a3;
+    color: grey;
+  }
+
+  select:focus, input:focus {
+    outline: none;
+  }
+
+  option:disabled {
+    color: white;
   }
 `;
