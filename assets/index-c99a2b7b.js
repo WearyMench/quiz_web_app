@@ -168,4 +168,18 @@ Error generating stack: `+o.message+`
   .start {
     max-width: 200px;
   }
+
+  @media screen and (max-width: 480px) {
+  h1 {
+    font-size: 45px;
+  }
+  }
+  @media screen and (max-width: 340px) {
+  h1 {
+    font-size: 35px;
+  }
+  .score {
+    font-size: 1.5rem;
+  }
+  }
 `;let tr=10;const Vm=()=>{const[e,t]=ue.useState(!1),[n,r]=ue.useState([]),[l,o]=ue.useState(0),[i,u]=ue.useState([]),[s,c]=ue.useState(0),[h,m]=ue.useState(!0),[p,w]=ue.useState(10),[g,S]=ue.useState("9"),[$,f]=ue.useState("easy"),[a,d]=ue.useState("multiple"),y=async()=>{t(!0),m(!1);const P=await Ah(tr=p,g,$,a);r(P),c(0),u([]),o(0),t(!1)},x=P=>{if(!h){const N=P.currentTarget.value,U=n[l].correct_answer===N;U&&c(oe=>oe+1);const A={question:n[l].question,answer:N,correct:U,correctAnswer:n[l].correct_answer};u(oe=>[...oe,A])}},z=()=>{const P=l+1;P===tr?m(!0):o(P)};return ht(vs,{children:[b(Um,{}),ht(Bm,{children:[b("h1",{children:"QUIZ GAME"}),h||i.length===tr?ht(vs,{children:[b(jm,{totalQuestions:p,setTotalQuestions:w,setCategory:S,difficulty:$,setDifficulty:f,setType:d}),b("button",{className:"start",onClick:y,children:"Start"})]}):null,h?null:ht("p",{className:"score",children:["Score: ",s]}),e?b("p",{children:"Loading Questions..."}):null,!e&&!h&&b(Mm,{questionNr:l+1,totalQuestions:tr,question:n[l].question,answers:n[l].answers,userAnswer:i?i[l]:void 0,callback:x}),!h&&!e&&i.length===l+1&&l!==tr-1?b("button",{className:"next",onClick:z,children:"Next Question"}):null]})]})};si.createRoot(document.getElementById("root")).render(b(Vn.StrictMode,{children:b(Vm,{})}));
